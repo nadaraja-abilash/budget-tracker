@@ -1,115 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#2ecc71">
+    <title>Smart Budget Tracker</title>
+
+    <link rel="stylesheet" href="budjet.css">
     <link rel="icon" href="logo1.jpeg">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Budget Tracker</title>
-<link rel="stylesheet" href="budjet.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-
-    <div id="welcomePopup" class="popup">
-  <div class="popup-content">
-    <h2>👋 Welcome</h2>
-    <p> ➤ Welcome to <strong>Abilash's </strong>Budget Tracker Website 💰</p>
-    <p> <i> ➤ Track your income and expences easily 🫶</i></p>
-    <button onclick="closePopup()">Start</button>
-  </div>
+<div id="welcomePopup" class="popup">
+    <div class="popup-content">
+        <h2>Welcome</h2>
+        <p>Welcome to <strong>Abilash's</strong> Budget Tracker.</p>
+        <p>Track your income and expenses easily.</p>
+        <button onclick="closePopup()">Start</button>
+    </div>
 </div>
 
 <div class="container">
 
-<header class="site-header">
-    <img src="logo1.jpeg" alt="Lash Budget Tracker Logo" class="logo">
-    <h1>LashBudget</h1>
-</header>
+    <header class="site-header">
+        <img src="logo1.jpeg" alt="Budget Tracker Logo" class="logo">
+        <h1>LashBudget</h1>
+    </header>
 
-<div class="currency-box">
-<label>Currency</label>
-<select id="currency" onchange="changeCurrency()">
-<option value="₹">INR ₹</option>
-<option value="$">USD $</option>
-<option value="Rs">LKR Rs</option>
-</select>
-</div>
+    <div class="currency-box">
+        <label for="currency">Currency</label>
+        <select id="currency" onchange="changeCurrency()">
+            <option value="₹">INR ₹</option>
+            <option value="$">USD $</option>
+            <option value="Rs">LKR Rs</option>
+        </select>
+    </div>
 
-<div class="summary">
+    <div class="summary">
+        <div class="card income">
+            <h3>Income</h3>
+            <p><span class="symbol">₹</span><span id="income">0</span></p>
+        </div>
 
-<div class="card income">
-<h3>Income</h3>
-<p><span class="symbol">₹</span><span id="income">0</span></p>
-</div>
+        <div class="card expense">
+            <h3>Expense</h3>
+            <p><span class="symbol">₹</span><span id="expense">0</span></p>
+        </div>
 
-<div class="card expense">
-<h3>Expense</h3>
-<p><span class="symbol">₹</span><span id="expense">0</span></p>
-</div>
+        <div class="card balance">
+            <h3>Balance</h3>
+            <p><span class="symbol">₹</span><span id="balance">0</span></p>
+        </div>
+    </div>
 
-<div class="card balance">
-<h3>Balance</h3>
-<p><span class="symbol">₹</span><span id="balance">0</span></p>
-</div>
+    <div class="form">
+        <input type="date" id="date">
+        <input type="text" id="desc" placeholder="Description">
+        <input type="number" id="amount" placeholder="Amount">
 
-</div>
+        <select id="type">
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+        </select>
 
-<div class="form">
+        <button onclick="addTransaction()">Add Transaction</button>
+    </div>
 
-  <input type="date" id="date" placeholder="Date">
+    <h2>History</h2>
+    <ul id="list"></ul>
 
-<input type="text" id="desc" placeholder="Description">
+    <hr>
 
-<input type="number" id="amount" placeholder="Amount">
-
-<select id="type">
-<option value="income">Income</option>
-<option value="expense">Expense</option>
-</select>
-
-<button onclick="addTransaction()">Add Transaction</button>
-
-</div>
-
-<h2><u>History</u></h2>
-
-<ul id="list"></ul>
-
-
-<br>
-
-<a href="https://forms.gle/hkEU4G2Mb5Qi5m156" target="_blank">Give Your support</a>
-<br><br>
-
-<hr>
-<footer>
-  <p>&copy; <span id="year" style="color: #ff6600; font-weight:bold;"></span> Created by Nadaraja Abilash | Smart Budget Tracker | privacy policy | </p>
-</footer>
-
+    <footer>
+        <p>&copy; <span id="year"></span> Created by Nadaraja Abilash</p>
+    </footer>
 
 </div>
 
 <script>
 document.getElementById("year").textContent = new Date().getFullYear();
 </script>
-<script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js")
-  .then(() => console.log("Service Worker Registered"));
-}
-</script>
 
 <script src="budjet.js"></script>
 
 </body>
 </html>
-
-
